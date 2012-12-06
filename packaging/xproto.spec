@@ -1,12 +1,11 @@
 Name:           xproto
 Version:        7.0.23
-Release:        1
+Release:        0
 License:        MIT
 Summary:        X
 Url:            http://www.x.org
 Group:          Development/System
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros)
 
