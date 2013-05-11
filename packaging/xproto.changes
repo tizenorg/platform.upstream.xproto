@@ -1,3 +1,6 @@
+* Sat May 11 2013 Anas Nashif <anas.nashif@intel.com> submit/tizen/20130509.185330@edec8cb
+- Set license using %license
+
 * Thu Dec 06 2012 Anas Nashif <anas.nashif@intel.com> upstream/7.0.23@83b66bc
 - Set release to 0
 - Imported Upstream version 7.0.23
