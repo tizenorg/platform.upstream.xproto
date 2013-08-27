@@ -231,3 +231,6 @@
 #define XF86XK_Prev_VMode	0x1008FE23   /* prev. video mode available */
 #define XF86XK_LogWindowTree	0x1008FE24   /* print window tree to log   */
 #define XF86XK_LogGrabInfo	0x1008FE25   /* print all active grabs to log */
+
+/* Keys for special action keys for Tizen mobile */
+#define XF86XK_AudioPlayPause   0x1008E001   /* Start playing of audio or pause audio playing (toggle) */

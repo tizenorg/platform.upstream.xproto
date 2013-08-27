@@ -67,10 +67,11 @@ typedef long fd_mask;
 # endif
 #endif
 
-#define XFD_SETSIZE	256
-
 #ifndef FD_SETSIZE
+#define XFD_SETSIZE	256
 #define FD_SETSIZE	XFD_SETSIZE
+#else
+#define XFD_SETSIZE	FD_SETSIZE
 #endif
 
 #ifndef NBBY
@@ -119,6 +120,19 @@ typedef struct fd_set {
  * array. before accessing an element in the array we check it exists.
  * If it does not exist then the compiler discards the code to access it. 
  */
+static inline int
+xfd_anyset(fd_set* p)
+{
+    int i;
+    for(i=0; i < howmany(FD_SETSIZE, NFDBITS); i++)
+    {
+    	if(__XFDS_BITS(p, i)) return 1;
+    }
+    return 0;
+}
+#define XFD_ANYSET(p)  (xfd_anyset(p))
+
+/* Change Inline Function
 #define XFD_ANYSET(p) \
         ((howmany(FD_SETSIZE, NFDBITS) > 0 && (__XFDS_BITS(p, 0))) || \
         (howmany(FD_SETSIZE, NFDBITS) > 1 && (__XFDS_BITS(p, 1))) || \
@@ -128,6 +142,7 @@ typedef struct fd_set {
         (howmany(FD_SETSIZE, NFDBITS) > 5 && (__XFDS_BITS(p, 5))) || \
         (howmany(FD_SETSIZE, NFDBITS) > 6 && (__XFDS_BITS(p, 6))) || \
         (howmany(FD_SETSIZE, NFDBITS) > 7 && (__XFDS_BITS(p, 7))))
+*/
 
 #define XFD_COPYSET(src,dst) { \
         int __i__; \
