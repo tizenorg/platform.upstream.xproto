@@ -1,5 +1,5 @@
 Name:           xproto
-Version:        7.0.23
+Version:        7.0.25
 Release:        0
 License:        MIT
 Summary:        X
@@ -18,7 +18,7 @@ BuildRequires:  pkgconfig(xorg-macros)
 cp %{SOURCE1001} .
 
 %build
-%configure --disable-static \
+%autogen --disable-static \
              --libdir=%{_datadir} \
              --without-xmlto
 
