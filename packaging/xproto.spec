@@ -1,5 +1,5 @@
 Name:           xproto
-Version:        7.0.25
+Version:        7.0.26
 Release:        0
 License:        MIT
 Summary:        X
