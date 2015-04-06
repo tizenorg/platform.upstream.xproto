@@ -1,5 +1,5 @@
 Name:           xproto
-Version:        7.0.26
+Version:        7.0.27
 Release:        0
 License:        MIT
 Summary:        X
@@ -9,6 +9,11 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1001: 	xproto.manifest
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros)
+%if "%{?profile}" == "common"
+%else
+BuildRequires:  python
+BuildRequires:  e-tizen-data
+%endif
 
 %description
 %{summary}
@@ -16,6 +21,11 @@ BuildRequires:  pkgconfig(xorg-macros)
 %prep
 %setup -q
 cp %{SOURCE1001} .
+%if "%{?profile}" == "common"
+%else
+chmod a+x ./make_tizen_keymap.sh
+./make_tizen_keymap.sh
+%endif
 
 %build
 %autogen --disable-static \
@@ -35,4 +45,3 @@ make %{?_smp_mflags}
 %defattr(-,root,root,-)
 %{_includedir}/X11/*.h
 %{_datadir}/pkgconfig/*.pc
-
